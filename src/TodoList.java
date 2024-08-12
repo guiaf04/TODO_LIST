@@ -45,4 +45,11 @@ public class TodoList{
     }
   }
 
+  public void editStatus(String name, Status status){
+    for(Task t : taskList){
+      if(t.getName().equals(name)){
+        t.setStatus(status);
+      }
+    }
+  }
 }
