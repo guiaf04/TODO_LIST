@@ -96,6 +96,6 @@ class ComparatorForCategory implements Comparator<Task>{
 class ComparatorForStatus implements Comparator<Task>{
   @Override
   public int compare(Task o1, Task o2) {
-    return o1.getStatus().compareTo(o2.getStatus());
+    return o2.getStatus().compareTo(o1.getStatus());
   }
 }
