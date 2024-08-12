@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
   public static void main(String[] args) {
     TodoList todoList = new TodoList();
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in).useDelimiter("\n");
     String input = "";
 
     while(!input.equalsIgnoreCase("0")){
@@ -18,7 +18,7 @@ public class Main {
               c - By status
             4 - Update Status of a task
             """);
-      input = scanner.nextLine();
+      input = scanner.next();
       if(input.equalsIgnoreCase("1")){
         System.out.println("Give a name, description, priority an category for the task");
 
@@ -36,8 +36,8 @@ public class Main {
       }else if(input.equalsIgnoreCase("3")){
         System.out.println("Give a option for filter that you have");
         String option = scanner.next();
-
-        if(option.equalsIgnoreCase("a")){
+        System.out.println(option);
+        if(option.equals("a")){
           todoList.showList();
         }else if(option.equalsIgnoreCase("b")){
           todoList.showList(new ComparatorForCategory());
