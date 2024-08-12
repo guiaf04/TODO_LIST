@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class TodoList{
@@ -29,9 +30,17 @@ public class TodoList{
     //TODO
   }
 
-  public void showList(){
+  public void showList() {
     System.out.println();
-    for(Task t : taskList){
+    for(Task t : taskList) {
+      System.out.println(t);
+    }
+  }
+
+  public void showList(Comparator<Task> filter) {
+    System.out.println();
+    taskList.sort(filter);
+    for(Task t : taskList) {
       System.out.println(t);
     }
   }
