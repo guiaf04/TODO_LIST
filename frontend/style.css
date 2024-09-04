@@ -1,0 +1,100 @@
+ul {
+    list-style-type: none;
+    margin-right: 15%;
+    text-align: center;
+}
+
+li{
+    margin: 7.5% 0 0%;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#about{
+    background-color: brown;
+    margin-left: -8px;
+    margin-right: -10px;
+    text-align: center;
+}
+
+#todolist p{
+    margin: 7.5% 0 0 0;
+    text-align: center;
+}
+
+#about h1{
+    margin-top: -1.03%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#todolist form{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+
+#todolist input{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    margin-bottom: 1%;
+}
+
+#todolist #buttonForm{
+    display: flex;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 2%;
+}
+
+#todolist #todolistContainer{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+}
+
+#todolist .container{
+    display: flex;
+    flex-direction: row;
+}
+
+#todolist .container #todo{
+    background-color: red;
+    color: black;
+    width: 33vh;
+}
+
+#todolist .container #todo ul{
+    border-radius: 20px;
+    background-color: black;
+    color: aliceblue;
+    margin-left: auto;
+    margin-right: auto; 
+    text-align: center;
+}
+  
+
+#todolist .container #todo li{
+    text-align: justify;
+}
+
+#todolist .container #doing{
+    background-color: yellow;
+    color: black;
+    width: 33vh;
+}
+#todolist .container #done{
+    background-color: green;
+    color: black;
+    width: 33vh;
+}
