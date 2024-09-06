@@ -6,34 +6,15 @@ document.getElementById("buttonAdd").addEventListener("click", function(){
     var category  = document.getElementById("category") .value
     var priority  = document.getElementById("priority") .value
  
-    if(status == "TODO" || status == "todo"){
-        document.getElementById("todo").innerHTML += (
-            '<ul>' +
-            '<li>' +   nome      +'</li>' +
-            '<li>' + descricao   +'</li>' +
-            '<li>' +  endDate    +'</li>' +
-            '<li>' + category    +'</li>' +
-            '<li>' + priority    +'</li>' +
-            '</ul>');
-    }else if(status == "DOING" || status == "doing"){
-        document.getElementById("doing").innerHTML += (
-            '<ul>' +
-            '<li>' +   nome      +'</li>' +
-            '<li>' + descricao   +'</li>' +
-            '<li>' +  endDate    +'</li>' +
-            '<li>' + category    +'</li>' +
-            '<li>' + priority    +'</li>' +
-            '</ul>');
-    }else if(status == "DONE" || status == "done"){
-        document.getElementById("done").innerHTML += (
-            '<ul>' +
-            '<li>' +   nome      +'</li>' +
-            '<li>' + descricao   +'</li>' +
-            '<li>' +  endDate    +'</li>' +
-            '<li>' + category    +'</li>' +
-            '<li>' + priority    +'</li>' +
-            '</ul>');
-    }
+   
+    document.getElementById(status).innerHTML += (
+        '<ul>' +
+        '<li>' +   nome      +'</li>' +
+        '<li>' + descricao   +'</li>' +
+        '<li>' +  endDate    +'</li>' +
+        '<li>' + category    +'</li>' +
+        '<li>' + priority    +'</li>' +
+        '</ul>');
 
     document.getElementById("name")     .value = ''
     document.getElementById("descricao").value = ''
