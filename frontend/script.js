@@ -1,48 +1,48 @@
+var nome      = document.getElementById("name")     
+var descricao = document.getElementById("descricao")
+var Status    = document.getElementById("status")   
+var endDate   = document.getElementById("endDate")  
+var category  = document.getElementById("category") 
+var priority  = document.getElementById("priority") 
+
+function clearForm(){
+	nome     .value = ''
+	Status   .value = ''
+	descricao.value = ''
+	endDate  .value = ''
+	category .value = ''
+	priority .value = ''
+}
+
 document.getElementById("buttonAdd").addEventListener("click", function(){
-    var nome      = document.getElementById("name")     .value
-    var descricao = document.getElementById("descricao").value
-    var status    = document.getElementById("status")   .value
-    var endDate   = document.getElementById("endDate")  .value
-    var category  = document.getElementById("category") .value
-    var priority  = document.getElementById("priority") .value
- 
-   
-    document.getElementById(status).innerHTML += (
+	
+    document.getElementById(Status.value).innerHTML += (
         '<ul>' +
-        '<li>' +   nome      +'</li>' +
-        '<li>' + descricao   +'</li>' +
-        '<li>' +  endDate    +'</li>' +
-        '<li>' + category    +'</li>' +
-        '<li>' + priority    +'</li>' +
+        '<li>' +   nome.value    +'</li>' +
+        '<li>' + descricao.value +'</li>' +
+        '<li>' +  endDate.value	 +'</li>' +
+        '<li>' + category.value  +'</li>' +
+        '<li>' + priority.value  +'</li>' +
         '</ul>');
 
-    document.getElementById("name")     .value = ''
-    document.getElementById("descricao").value = ''
-    document.getElementById("status")   .value = ''
-    document.getElementById("endDate")  .value = ''
-    document.getElementById("category") .value = ''
-    document.getElementById("priority") .value = ''
+   clearForm();
 })
 
 document.getElementById("buttonRemove").addEventListener("click", function(){
-    var nome      = document.getElementById("name")     .value;
-    var descricao = document.getElementById("descricao").value;
-    var status    = document.getElementById("status")   .value;
+    if(nome.value != null && descricao.value != null && Status.value != null){
 
-    
-    if(nome != null && descricao != null && status != null){
-        var ulContent = document.getElementById(status).getElementsByTagName("ul");
+        var ulContent = document.getElementById(Status.value).getElementsByTagName("ul");
+
         for(i = 0; i < ulContent.length; i++){
-
             var liContent = ulContent[i].getElementsByTagName("li");
 
-            if(liContent[0].innerHTML == nome && liContent[1].innerHTML == descricao){
+            if(liContent[0].innerHTML == nome.value && liContent[1].innerHTML == descricao.value){
                 ulContent[i].remove();
                 break;
             }
-        }
-        
+        }   
     }
+		clearForm();
 })
 
 document.getElementById("buttonEdit").addEventListener("click", function(){
@@ -50,33 +50,26 @@ document.getElementById("buttonEdit").addEventListener("click", function(){
 })
 
 function clearEditForm(){
-    var nome      = document.getElementById("name")     .value;
-    var descricao = document.getElementById("descricao").value;
-    var status    = document.getElementById("status")   .value;
-    var statusEdit= document.getElementById("statusEdit").value;
-    var endDate   = document.getElementById("endDate")  .value;
-    var category  = document.getElementById("category") .value;
-    var priority  = document.getElementById("priority") .value;
-
     var propertys = [
-        nome, 
-        descricao, 
-        status, 
-        endDate, 
-        category, 
-        priority]
+        nome.value, 
+        descricao.value, 
+        Status.value, 
+        endDate.value, 
+        category.value, 
+        priority.value]
 
     var formEdit = document.getElementById("formEdit");
+		var statusEdit = document.getElementById("statusEdit").value;
 
-    if(nome != null && descricao != null && status != null){
-        var ulContent = document.getElementById(status).getElementsByTagName("ul");
+    if(nome.value != null && descricao.value != null && Status.value != null){
+        var ulContent = document.getElementById(Status.value).getElementsByTagName("ul");
         for(i = 0; i < ulContent.length; i++){
 
             var liContent = ulContent[i].getElementsByTagName("li");
 
-            if(liContent[0].innerHTML == nome && liContent[1].innerHTML == descricao){
+            if(liContent[0].innerHTML == nome.value && liContent[1].innerHTML == descricao.value){
                 for(j = 0; j< formEdit.length - 1; j++){
-                    if(!formEdit[j].value.match(/^[\s]*$/)){
+                    if(!formEdit[j].value.match(/^[\s]*$/)){ 
                         propertys[j] = formEdit[j].value;
                     }
                     console.log(propertys[j])
@@ -95,11 +88,13 @@ function clearEditForm(){
         }
         
     }
+
     document.getElementById("nameEdit")     .value = ''
     document.getElementById("descricaoEdit").value = ''
     document.getElementById("statusEdit")   .value = ''
     document.getElementById("endDateEdit")  .value = ''
     document.getElementById("categoryEdit") .value = ''
     document.getElementById("priorityEdit") .value = ''
+
     document.getElementById("formEdit").style.display = "none";
 }
