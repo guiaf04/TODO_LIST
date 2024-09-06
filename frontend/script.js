@@ -35,12 +35,12 @@ document.getElementById("buttonAdd").addEventListener("click", function(){
             '</ul>');
     }
 
-    // document.getElementById("name")     .value = ''
-    // document.getElementById("descricao").value = ''
-    // document.getElementById("status")   .value = ''
-    // document.getElementById("endDate")  .value = ''
-    // document.getElementById("category") .value = ''
-    // document.getElementById("priority") .value = ''
+    document.getElementById("name")     .value = ''
+    document.getElementById("descricao").value = ''
+    document.getElementById("status")   .value = ''
+    document.getElementById("endDate")  .value = ''
+    document.getElementById("category") .value = ''
+    document.getElementById("priority") .value = ''
 })
 
 document.getElementById("buttonRemove").addEventListener("click", function(){
@@ -114,5 +114,11 @@ function clearEditForm(){
         }
         
     }
+    document.getElementById("nameEdit")     .value = ''
+    document.getElementById("descricaoEdit").value = ''
+    document.getElementById("statusEdit")   .value = ''
+    document.getElementById("endDateEdit")  .value = ''
+    document.getElementById("categoryEdit") .value = ''
+    document.getElementById("priorityEdit") .value = ''
     document.getElementById("formEdit").style.display = "none";
 }
