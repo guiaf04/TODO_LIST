@@ -1,19 +1,29 @@
-import java.util.Comparator;
+import java.util.Date;
 
 public class Task implements Comparable<Task>{
   private String name;
   private String description;
-  private String endDate;
+  private Date endDate;
   private int priorityLevel;
   private String category;
   private Status status;
+  private Alarm alarm;
 
-  public Task(String name, String description, int priorityLevel, String category) {
+  public Alarm getAlarm() {
+    return alarm;
+  }
+
+  public void setAlarm(Alarm alarm) {
+    this.alarm = alarm;
+  }
+
+  public Task(String name, String description, int priorityLevel, String category, Date endDate) {
     this.name = name;
     this.description = description;
     this.priorityLevel = priorityLevel;
     this.category = category;
     this.status = Status.TODO;
+    this.endDate = endDate;
   }
 
   public String getName() {
@@ -32,11 +42,11 @@ public class Task implements Comparable<Task>{
     this.description = description;
   }
 
-  public String getEndDate() {
+  public Date getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(String endDate) {
+  public void setEndDate(Date endDate) {
     this.endDate = endDate;
   }
 
@@ -68,7 +78,7 @@ public class Task implements Comparable<Task>{
   public String toString() {
     return "name=" + name + '\'' +
             ", description='" + description + '\'' +
-            ", endDate='" + endDate + '\'' +
+            ", endDate='" + endDate.toString() + '\'' +
             ", priorityLevel=" + priorityLevel +
             ", category='" + category + '\'' +
             ", status=" + status;
@@ -86,16 +96,5 @@ public class Task implements Comparable<Task>{
   }
 }
 
-class ComparatorForCategory implements Comparator<Task>{
-  @Override
-  public int compare(Task o1, Task o2) {
-    return o1.getCategory().compareTo(o2.getCategory());
-  }
-}
 
-class ComparatorForStatus implements Comparator<Task>{
-  @Override
-  public int compare(Task o1, Task o2) {
-    return o2.getStatus().compareTo(o1.getStatus());
-  }
-}
+

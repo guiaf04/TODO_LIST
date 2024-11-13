@@ -1,0 +1,3 @@
+nome;status;priority;endDate;dataLembrete;mensagemLembrete
+TESTE;TODO;4;Mon Nov 10 23:00:00 BRT 2024;2;Uma tarefa muito importante vai expirar e você ainda não começou ela, apresse-se!
+Testar o sistema;TODO;5;Wed Nov 13 01:00:00 BRT 2024;2;Uma tarefa muito importante vai expirar e você ainda não começou ela, apresse-se!

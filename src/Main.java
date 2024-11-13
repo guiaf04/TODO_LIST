@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -27,7 +28,45 @@ public class Main {
         int priority = scanner.nextInt();
         String category = scanner.next();
 
-        todoList.addTask(name, description, priority, category);
+        System.out.println("Digite o dia de finalização");
+        int day = scanner.nextInt();
+        System.out.println("Digite o mes de finalização");
+        int month = scanner.nextInt();
+        System.out.println("Digite o ano de finalização");
+        int year = scanner.nextInt();
+        System.out.println("Digite a hora de finalização");
+        int hour = scanner.nextInt();
+        System.out.println("Digite o minuto de finalização");
+        int min = scanner.nextInt();
+
+        Date endDate = new Date(year - 1900, ((month-1) % 12) , day, hour, min);
+
+        Task task = new Task(name, description, priority, category, endDate);
+
+        System.out.println("Você deseja adicionar um alerta para essa tarefa? \n " +
+                "Digite 1 para sim, e qualquer coisa para não");
+
+        String alarmOption = scanner.next();
+
+        if(alarmOption.equalsIgnoreCase("1")){
+          System.out.println("Com quantas horas de antecedencia você quer ser avisado?");
+          int horaLembrete = scanner.nextInt();
+          String message = "Uma task está prestes a expirar";
+
+          if(task.getPriorityLevel() > 3){
+            if(task.getStatus() == Status.TODO){
+              message = "Uma tarefa muito importante vai expirar e você ainda não começou ela, apresse-se!";
+            } else if (task.getStatus() == Status.DOING) {
+              message = "Uma tarefa muito importante vai expirar e você ainda não terminou ela, apresse-se!";
+            }
+          }
+
+          Alarm alarm = new Alarm(message,horaLembrete);
+
+          todoList.addAlarm(task, alarm);
+        }
+
+        todoList.addTask(task);
 
       }else if(input.equalsIgnoreCase("2")){
         System.out.println("Give a name for the task that you want delete");
