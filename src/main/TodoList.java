@@ -1,3 +1,5 @@
+package main;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
@@ -29,10 +31,10 @@ public class TodoList{
 
         Date dataTask = simpleDateFormat.parse(stringList[3]);
 
-        System.out.println("Now time: " + date.getTime() + ", Task time: " + dataTask.getTime());
+        System.out.println("Now time: " + date.getTime() + ", main.Task time: " + dataTask.getTime());
 
         if((dataTask.getTime() - date.getTime())/(3600.0*1000) < Integer.parseInt(horaAlarme)){
-          System.out.println("Task: " + stringList[0] + " " + stringList[stringList.length-1]);
+          System.out.println("main.Task: " + stringList[0] + " " + stringList[stringList.length-1]);
         }
 
       }
@@ -42,34 +44,15 @@ public class TodoList{
     }
   }
 
-  public void addTask(Task task) {
+  public boolean addTask(Task task) {
     taskList.add(task);
     Collections.sort(taskList);
 
-    if(task.getAlarm() == null){
-      return;
+    if(task.getAlarm() != null){
+      return addAlarmtoCSV(task);
     }
 
-    File taskList = new File("tasklits.csv");
-
-    try {
-      if (!taskList.exists()) {
-        taskList.createNewFile();
-      }
-
-      FileWriter fileWriter = new FileWriter(taskList, true);
-
-      if(taskList.length() == 0){
-        fileWriter.write("nome;status;priority;endDate;dataLembrete;mensagemLembrete");
-      }
-
-      fileWriter.write("\n" + task.getName() + ";" + task.getStatus() + ";" + task.getPriorityLevel() + ";"
-                        + task.getEndDate() + ";" + task.getAlarm().getHoraDeLembrete() + ";" + task.getAlarm().getMessage());
-      fileWriter.close();
-
-    }catch (Exception e){
-      System.out.println(e.getMessage());
-    }
+    return true;
   }
 
   public void deleteTask(String name){
@@ -90,19 +73,14 @@ public class TodoList{
     //TODO
   }
 
-  public void showList() {
-    System.out.println();
-    for(Task t : taskList) {
-      System.out.println(t);
-    }
+  public List<Task> showList() {
+    return this.taskList;
   }
 
-  public void showList(Comparator<Task> filter) {
-    System.out.println();
+  public List<Task> showList(Comparator<Task> filter) {
     taskList.sort(filter);
-    for(Task t : taskList) {
-      System.out.println(t);
-    }
+
+    return this.taskList;
   }
 
   public void editStatus(String name, Status status){
@@ -115,5 +93,30 @@ public class TodoList{
 
   public void addAlarm(Task task, Alarm alarm){
     task.setAlarm(alarm);
+  }
+
+  public boolean addAlarmtoCSV(Task task){
+    File taskList = new File("tasklits.csv");
+
+    try {
+      if (!taskList.exists()) {
+        taskList.createNewFile();
+      }
+
+      FileWriter fileWriter = new FileWriter(taskList, true);
+
+      if(taskList.length() == 0){
+        fileWriter.write("nome;status;priority;endDate;dataLembrete;mensagemLembrete");
+      }
+
+      fileWriter.write("\n" + task.getName() + ";" + task.getStatus() + ";" + task.getPriorityLevel() + ";"
+              + task.getEndDate() + ";" + task.getAlarm().getHoraDeLembrete() + ";" + task.getAlarm().getMessage());
+      fileWriter.close();
+    }catch (Exception e){
+      System.out.println(e.getMessage());
+      return false;
+    }
+
+    return true;
   }
 }

@@ -1,3 +1,5 @@
+package main;
+
 import java.util.Date;
 import java.util.Scanner;
 
@@ -73,15 +75,29 @@ public class Main {
         String name = scanner.next();
         todoList.deleteTask(name);
       }else if(input.equalsIgnoreCase("3")){
+
         System.out.println("Give a option for filter that you have");
+
         String option = scanner.next();
-        System.out.println(option);
+
         if(option.equals("a")){
-          todoList.showList();
+
+          for(Task t : todoList.showList()) {
+            System.out.println(t);
+          }
+          System.out.println();
+
         }else if(option.equalsIgnoreCase("b")){
-          todoList.showList(new ComparatorForCategory());
+          for(Task t : todoList.showList(new ComparatorForCategory())) {
+            System.out.println(t);
+          }
+          System.out.println();
         }else if(option.equalsIgnoreCase("c")){
-          todoList.showList(new ComparatorForStatus());
+
+          for(Task t : todoList.showList(new ComparatorForStatus())){
+            System.out.println(t);
+          }
+
         }else{
           System.out.println("invalid option, try again");
         }

@@ -16,11 +16,11 @@ commands in a terminal on src directory:
 
 ```
     javac *.class
-    java Main
+    java main.Main
 ```
 
-This is compiling the Main file and their dependencies
-and running the Main application
+This is compiling the main.Main file and their dependencies
+and running the main.Main application
 
 ## Features to do
 
